@@ -13,7 +13,7 @@ class UserController < ApplicationController
     @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], description: params[:description], city_id: 01, age: params[:age], password: params[:password] )
   if @user.save
 log_in(@user)
-redirect_to landing_path(@user.first_name)
+redirect_to root_path
 
 else 
 flash[:notice] = "Not good"

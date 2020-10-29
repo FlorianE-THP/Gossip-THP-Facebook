@@ -12,7 +12,10 @@
   <% end %>
 <h1> The Gossip Project 📸</h1>
 <br>
-<h2> Bienvenue <%= params["first_name"]%> </h2>
+  
+<h2> Bienvenue <% if logged_in? == true  %><%=current_user.first_name %><% end %> </h2>
+
+
 <br>
 <div class="button-gossip"> 
      <%= link_to "Créer un potin", new_gossip_path, :class => "btn btn-info"%>  </a>
@@ -36,13 +39,13 @@
      <% if logged_in? == true  %>   
     <% pre_like = t.likes.find { |like| like.user_id == current_user.id} %>
 <% if pre_like %>
-  <%= button_to 'Unlike', gossip_like_path(t, pre_like), method: :delete %>
+  <%= button_to 'Unlike', gossip_like_path(t, pre_like), method: :delete, class: "btn btn-link" %>
 <% else %>
-  <%= button_to 'Like', gossip_like_index_path(t), method: :post %>
+  <%= button_to 'Like', gossip_like_index_path(t), method: :post, class: "btn btn-link" %>
 <% end %>
     <% end %>
-     <small><%= t.likes.count %> <%= (t.likes.count) == 1 ? 'Like' : 'Likes'%></small> <br>
-         <small>Commentaires: <%= t.comment_ids.count %></small><br/>
+     <small><%= t.likes.count %> <%= (t.likes.count) == 1 ? '👍🏼' : '👍🏼 '%></small> 
+         <small>  📝: <%= t.comment_ids.count %></small><br/>
      </div>
        </h5>
       </div>

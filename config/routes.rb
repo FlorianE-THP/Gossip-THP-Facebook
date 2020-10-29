@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   resources :user
   resources :city
   resources :sessions
-
 end
