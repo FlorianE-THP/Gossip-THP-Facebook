@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+  
+  
   def index
-    @gossips = Gossip.all  
+    @gossips = Gossip.all 
   end
 end

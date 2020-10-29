@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get '/welcome/:first_name', to: 'welcome#say_hello', as: "landing"
   get '/team', to: 'team#show'
   get '/contact', to: 'contact#show'
-  resources :gossips 
+  resources :gossips do
+    resources :like, only: [:create, :destroy]
+  end
   resources :comment
   resources :home
   resources :user

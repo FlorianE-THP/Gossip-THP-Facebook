@@ -1,6 +1,7 @@
 class GossipsController < ApplicationController
   before_action :authenticate_user, only: [:index,:show, :new, :create, :edit, :update, :destroy]
-  before_action :is_user?, only: [:edit, :update, :destroy]
+  before_action :is_user, only: [:edit, :update, :destroy]
+  
   def index
     @gossips2 = Gossip.all  
   end
@@ -75,12 +76,14 @@ class GossipsController < ApplicationController
     end
   end
 
-  def is_user?
+  def is_user
     @gossip = Gossip.find(params[:id])
     unless current_user.id == @gossip.user_id 
       flash[:danger] = "Tu ne peux pas modifier cela."
-      render 'new'
+      redirect_to root_path
     end
 end 
+
+
 
 end 

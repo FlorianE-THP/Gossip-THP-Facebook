@@ -33,6 +33,15 @@
      <div class="button-des"> 
      <%= link_to "Lien vers le potin", gossip_path(t.id), :class => "btn btn-success"%>  </a>
      <br/> 
+     <% if logged_in? == true  %>   
+    <% pre_like = t.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', gossip_like_path(t, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', gossip_like_index_path(t), method: :post %>
+<% end %>
+    <% end %>
+     <small><%= t.likes.count %> <%= (t.likes.count) == 1 ? 'Like' : 'Likes'%></small> <br>
          <small>Commentaires: <%= t.comment_ids.count %></small><br/>
      </div>
        </h5>

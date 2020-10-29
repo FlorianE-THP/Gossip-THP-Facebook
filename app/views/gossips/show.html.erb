@@ -21,10 +21,22 @@
 <%= link_to "Voir la page de l'auteur", user_path(@gossipsfind.user[:id]), :class => 'btn btn-success'%>
 <%= link_to "Voir la page de la ville", city_path(@user.city[:id]), :class => 'btn btn-success'%> <br> <br>
 <%= link_to "Revenir à l'accueil", root_path, :class => 'btn btn-info'%>
+<% if user_is == true  %>
 <%= link_to "Editer", edit_gossip_path(@gossipsfind.id), :class => 'btn btn-secondary'%>
-<%= link_to "Supprimer", @gossips, method: :delete, data: {confirm: "T'es sur ?"}, :class => 'btn btn-danger'%>
+<%= link_to "Supprimer", @gossip, method: :delete, data: {confirm: "T'es sur ?"}, :class => 'btn btn-danger'%>
+
+  <% end %>
+
+  <% pre_like = @gossip.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', gossip_like_path(@gossip, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', gossip_like_index_path(@gossip), method: :post %>
+<% end %>
+
 <br>
 <br>
+<p><%= @gossipsfind.likes.count %> <%= (@gossipsfind.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 <br>
 <h2> Commentaires </h2>
 
@@ -36,11 +48,16 @@
                     <div class="p-2"><img src="https://icons.iconarchive.com/icons/chrisl21/minecraft/64/Creeper-icon.png" alt="user" width="50" class="rounded-circle"></div>
                     <div class="comment-text w-100">
                         <h6 class="font-medium"><%= c.user[:first_name] %></h6> <span class="m-b-15 d-block"><%= c.content %></span>
-                        <div class="comment-footer"> <span class="text-muted float-right">April 14, 2019</span><%= link_to "  Edit  ", edit_comment_path(c.id), class:"btn btn-cyan btn-sm" %> </div>
+                        <div class="comment-footer"> <span class="text-muted float-right">April 14, 2019</span>
+                        <% if comment_is == true  %>
+                        <%= link_to "  Edit  ", edit_comment_path(c.id), class:"btn btn-cyan btn-sm" %><% end %> </div>
+                        
                     </div>
-                      
+                       
                 </div> 
+                 
                 <% end %><!-- Comment Row --> <!-- Card -->
+                
         </div>
     </div>
 </div>
