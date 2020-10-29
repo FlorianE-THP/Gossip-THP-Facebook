@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Gossip Project</title>
+</head>
+
+<body>
+<% if flash[:notice] %>
+<div class="alert alert-success" role="alert">
+  Votre potin a bien été supprimée.
+</div>
+  <% end %>
+<h1> The Gossip Project 📸</h1>
+<br>
+<h2> Bienvenue <%= params["first_name"]%> </h2>
+<br>
+<div class="button-gossip"> 
+     <%= link_to "Créer un potin", new_gossip_path, :class => "btn btn-info"%>  </a>
+     </div>
+
+     <br> 
+<h3> Voici la liste des potins</h3>
+<br> 
+ <div class="row justify-content-center">
+<% @gossips.each do |t| %>
+    <div class="card m-4 col-sm-12 col-md-4 col-lg-3 text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+     Auteur: <%= t.user[:first_name] %>
+        <p class="card-text">
+     Potin: <%= t.title %><br/>
+
+     <div class="button-des"> 
+     <%= link_to "Lien vers le potin", gossip_path(t.id), :class => "btn btn-success"%>  </a>
+     <br/> 
+         <small>Commentaires: <%= t.comment_ids.count %></small><br/>
+     </div>
+       </h5>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+</body>
+
+</html>

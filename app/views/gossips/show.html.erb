@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Gossip Project</title>
+</head>
+
+<body>
+<% if flash[:notice] %>
+<div class="alert alert-success" role="alert">
+  Votre potin a bien été crée.
+</div>
+  <% end %>
+
+<h1> Potin nº <%= params[:id]%> 🧢 </h1>
+<br>
+<p>Auteur : <%=@gossipsfind.user[:first_name]%></p>
+<p>Titre : <%=@gossipsfind.title%></p>
+<p> Contenu : <%=@gossipsfind.content%></p>
+<p> Création : <%=@gossipsfind.created_at%></p>
+<p> Ville : <%=@user.city[:name]%></p> <br> 
+<%= link_to "Voir la page de l'auteur", user_path(@gossipsfind.user[:id]), :class => 'btn btn-success'%>
+<%= link_to "Voir la page de la ville", city_path(@user.city[:id]), :class => 'btn btn-success'%> <br> <br>
+<%= link_to "Revenir à l'accueil", root_path, :class => 'btn btn-info'%>
+<%= link_to "Editer", edit_gossip_path(@gossipsfind.id), :class => 'btn btn-secondary'%>
+<%= link_to "Supprimer", @gossips, method: :delete, data: {confirm: "T'es sur ?"}, :class => 'btn btn-danger'%>
+<br>
+<br>
+<br>
+<h2> Commentaires </h2>
+
+<div class="row d-flex justify-content-center mt-100 mb-100">
+<% @comments.each do |c| %>
+            <div class="comment-widgets">
+                <!-- Comment Row -->
+                <div class="d-flex flex-row comment-row m-t-0">
+                    <div class="p-2"><img src="https://icons.iconarchive.com/icons/chrisl21/minecraft/64/Creeper-icon.png" alt="user" width="50" class="rounded-circle"></div>
+                    <div class="comment-text w-100">
+                        <h6 class="font-medium"><%= c.user[:first_name] %></h6> <span class="m-b-15 d-block"><%= c.content %></span>
+                        <div class="comment-footer"> <span class="text-muted float-right">April 14, 2019</span><%= link_to "  Edit  ", edit_comment_path(c.id), class:"btn btn-cyan btn-sm" %> </div>
+                    </div>
+                      
+                </div> 
+                <% end %><!-- Comment Row --> <!-- Card -->
+        </div>
+    </div>
+</div>
+<br>
+
+
+
+
+<br>
+<br>
+<br>
+<%= form_tag '/comment', method: "post" do %>
+  <%= label_tag 'comment : ' %>
+  <%= text_area_tag 'content', @comment.content %>
+  <input name="gossip_id" type="hidden" value="<%= @gossipsfind.id %>">
+  <br/> <br/>
+  <%= submit_tag "Create comment", class: "btn btn-secondary " %>
+<% end %>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

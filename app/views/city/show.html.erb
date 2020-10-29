@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Gossip Project</title>
+</head>
+
+<body>
+
+<h1> Voici la page de la ville : <%=@cityfind.name%> 🏞</h1>
+<br>
+<p> Ville : <%=@cityfind.name%></p> <br>
+<p> Code Postal : <%=@cityfind.zip_code%></p> <br> 
+
+
+<br>
+ <div class="row justify-content-center">
+<% @gossips.each do |t| %>
+    <div class="card m-4 col-sm-12 col-md-4 col-lg-3 text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+     Auteur: <%= t.title %>
+        <p class="card-text">
+     Potin: <%= t.content %>
+     <div class="button-des"> 
+     <%= link_to "Lien vers le potin", gossip_path(t.id), :class => "btn btn-info"%>  </a>
+     </div>
+       </h5>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<br><br>
+
+ <%= link_to "Revenir à l'accueil", root_path, :class => 'btn btn-info'%>
+
+
+
+
+</body>
+
+</html>

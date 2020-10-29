@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Gossip Project - Create</title>
+</head>
+
+<body>
+<% if flash[:notice] %>
+<div class="alert alert-danger" role="alert">
+  Il y a une erreur quelque part... 
+</div>
+  <% end %>
+
+<h1> Bienvenue sur la page de modification d'un potin</h1>
+<div class='ecart'> </div>
+<small>Allez-y.. ça reste entre nous 😙 <small>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+<%= form_for @gossip_edit do |f| %>
+<form>
+  <div class="row">
+    <div class="col">
+
+        <%= f.text_field :title, class: "form-control", placeholder: 'Un titre sympa', autocomplete: 'off' %>
+        <br /> <br />
+</div>
+<div class="col">
+        <%= f.text_field :content, class: "form-control", placeholder: 'Votre potin', autocomplete: 'off'%>
+    </div>
+  </div>
+    <br /> 
+    <%= submit_tag "Modifier", class: "btn btn-primary" %>  <%= link_to "Revenir à l'accueil", root_path, :class => 'btn btn-info'%>
+</div>
+      <% end %>
+
+        </form>
+
+
+</div>
+</body>
+
+</html>
