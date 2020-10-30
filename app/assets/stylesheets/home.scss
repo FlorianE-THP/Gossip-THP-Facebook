@@ -2,16 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-body {
+#home body {
     margin: 0, auto;
     text-align: center;
 }
 
-h5 {
+#home h5 {
     font-weight: normal;
 }
 
-.card {
+#home .card {
     max-width: 300px;
     max-height: 200px;
     margin-top: 20px;
@@ -19,13 +19,13 @@ h5 {
     
 }
 
-.row {
+#home .row {
 
 display: inline-flex;
 
 }
 
-.button-des {
+#home .button-des {
     margin-top: 30px;
 }
 
