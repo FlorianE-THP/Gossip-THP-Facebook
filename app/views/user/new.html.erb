@@ -31,7 +31,7 @@
       </div>
       <div class="form-group">
         <%= label_tag 'Mot de passe*' %> <span style="font-size:12px;"> 6 à 20 caractères :)</span>
-        <%= text_field_tag 'password', @user.password, class: 'form-control' %>
+        <%= password_field_tag 'password', @user.password, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= submit_tag "Envoyer", class:"btn btn-light" %>
