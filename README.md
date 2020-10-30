@@ -1,41 +1,39 @@
-# README
+# The Gossip Project (Alpha)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-<label for="tags">Choose a car:</label>
-
-<select id="tags" name="carlist" form="carform">
-<%= @tag.each do |t| %>
-  <option value="<%t.title%>"><%=t.title%></option>
-<% end %>
-</select>
-
-        <%= submit_tag "Créer le gossip", class: "btn btn-primary" %>  <%= link_to "Revenir à l'accueil", root_path, :class => 'btn btn-info'%>
-</div>
-      <% end %>
-      
-        </form>
+The Gossip project is a "school" project from THP
 
 
-        btn btn-cyan btn-sm
+It is a social network based on which you can post gossip, comments, and like them. 
+Create a profile and view those of other registered people.
+
+You can
+
+## How to Install
+
+Download the archive, and unzip it in your workfolder. Launch your terminal at the folder path.
+
+Now you can type this commands:
+bundle install
+
+and 
+yarn install --check-files
+
+
+
+
+
+## How to Use 
+
+If you want to feed the Database, type this command :
+
+rails db:seed
+ 
+-----
+For launch server do 
+
+rails s
+
+
+Open Browser and type this at URL:
+
+localhost:3000
