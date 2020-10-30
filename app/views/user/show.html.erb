@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>The Gossip Project</title>
-</head>
-
-<body>
-<h1> Utilisiteurs numéro <%= params[:id]%> 🧢 </h1>
-<br><br>
-
-<p><strong>Prénom :</strong><br> <%=@userfind.first_name%></p>
-<p><strong>Nom :</strong> <br><%=@userfind.last_name%></p>
-<p><strong>Description :</strong><br> <%=@userfind.description%></p>
-<p><strong>Email :</strong><br> <%=@userfind.email%></p>
-<p><strong>Age :</strong><br> <%=@userfind.age%></p>
-<p><strong>Ville :</strong><br> <%=@userfind.city[:name]%></p>
-
-<br>
-
-
- <%= link_to "Revenir à l'accueil", root_path, :class => 'btn btn-info'%> <%= link_to "Voir la page de la ville", city_path(@userfind.city[:id]), :class => 'btn btn-success'%>
- <br>
-<br>
-<br>
-<h2> Commentaires </h2>
-<br>
-<br>
-<br>
- <% @comments.each do |c| %>
-<%= c.title %>
-<%= c.content %>
-
-  <% end %>
-
-
-
-
-
-</body>
-
+  <head>
+    <title>The Gossip Project</title>
+  </head>
+  <body>
+    <h1> Utilisiteurs numéro <%= params[:id]%> 🧢 </h1>
+    <br>
+    <br>
+    <p><strong>Prénom :</strong><br>
+       <%=@userfind.first_name%></p>
+    <p><strong>Nom :</strong> <br>
+      <%=@userfind.last_name%></p>
+    <p><strong>Description :</strong><br>
+       <%=@userfind.description%></p>
+    <p><strong>Email :</strong><br>
+       <%=@userfind.email%></p>
+    <p><strong>Age :</strong><br>
+       <%=@userfind.age%></p>
+    <p><strong>Ville :</strong><br>
+       <%=@userfind.city[:name]%></p>
+    <br>
+    <%= link_to "Revenir à l'accueil", root_path, :class => 'btn btn-info'%> <%= link_to "Voir la page de la ville", city_path(@userfind.city[:id]), :class => 'btn btn-success'%>
+    <br>
+    <br>
+    <br>
+    <h2> Commentaires </h2>
+    <br>
+    <br>
+    <br>
+    <% @comments.each do |c| %>
+      <%= c.title %>
+      <%= c.content %>
+    <% end %>
+  </body>
 </html>
