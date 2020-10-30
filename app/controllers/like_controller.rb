@@ -6,7 +6,6 @@ class LikeController < ApplicationController
 
     def create
       if already_liked?
-        flash[:notice] = "You can't like more than once"
         redirect_to root_path
       else
       @gossip.likes.create(user_id: current_user.id)
@@ -15,7 +14,6 @@ class LikeController < ApplicationController
 
     def destroy
       if !(already_liked?)
-        flash[:notice] = "Cannot unlike"
       else
         @like.destroy
       end

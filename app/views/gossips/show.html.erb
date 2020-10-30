@@ -29,9 +29,9 @@
 
   <% pre_like = @gossip.likes.find { |like| like.user_id == current_user.id} %>
 <% if pre_like %>
-  <%= button_to 'Unlike', gossip_like_path(@gossip, pre_like), method: :delete %>
+  <%= button_to 'Unlike', gossip_like_path(@gossip, pre_like), method: :delete, class: "btn btn-link" %>
 <% else %>
-  <%= button_to 'Like', gossip_like_index_path(@gossip), method: :post %>
+  <%= button_to 'Like', gossip_like_index_path(@gossip), method: :post, class: "btn btn-link" %>
 <% end %>
 
 <br>
